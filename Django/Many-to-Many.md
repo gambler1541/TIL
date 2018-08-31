@@ -19,5 +19,11 @@ group = models.ForeignKey(Group, on_delete=...)
 # 이 경우 어떤 Person이 이 클래스를 생성할 때 쓰는지 알 수 없다.
 # 이 때 원본모델에 `through_fields`속성을 넣어줌(첫번째 속성:source model, 두번째 속성:target model)
 # related_name을 중계모델에 지정
-# 중계모델을 직접 생성(create)해야 
+# 중계모델을 직접 생성(create)해야
 ```
+
+##### Many to Many에서 자기 자신을 속성으로 갖기
+> ex)친구 추가기능(서로의(대칭적인) 관계가 생김)
+
+* 각각의 pk값을 가진다.
+`symmetrical=False`: 대칭관계를 원하지 않을 때 사용되는 속성
