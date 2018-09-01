@@ -27,3 +27,7 @@ group = models.ForeignKey(Group, on_delete=...)
 
 * 각각의 pk값을 가진다.
 `symmetrical=False`: 대칭관계를 원하지 않을 때 사용되는 속성
+
+
+# Many to Many관계에서 자기자신을 참조하면서, 대칭적이지 않고 중계모델을 사용하는 경우(Many to Many self symmetrical=false intermediate)
+> 언제 follow했는지 기록, User의 관계(follow, block)
