@@ -14,14 +14,14 @@ User -> Service -> PG -> Service -> User
 * 결제부분만 `php-cli`를 통해 PHP로 처리하기도 함
 * UTF-8이 아닌 euc-kr 인코딩을 쓰기도 함
 
-### 아임포트
+### 아임포트(IAMPORT)
 
 * 각 PG사들에 대한 Gateway
 * 단일 API로 국내 많은 PG사들을 커버
 	* 개발환경에 중립적
 	
 ```
-Service -> Import -> Pg -> Import -> Service
+Service -> Iamport -> Pg -> Iamport -> Service
 ```
 
 > 카카오페이, 이니시스(웹표준결제), 나이스페이..
@@ -66,14 +66,45 @@ Service -> Import -> Pg -> Import -> Service
 * Key-in 결제: 전화를 통한 비대면 상황에서 카드정보 + 개인정보를 활용해 결제
 * 빌링 결제: 정기 결제
 
-개발자는 아임포트가 제공하는 표준화된 API로 간편히 연동
+개발자는 아임포트(IAMPORT)가 제공하는 표준화된 API로 간편히 연동
 
-1. PG창 결제창 호출 -> 결제 결과 수신`IMPORT-UID`
+1. PG창 결제창 호출 -> 결제 결과 수신`IAMPORT-UID`
 2. 결제 조회/검증(REST API)
 
+### 방어적으로 코딩하기
+> 결제프로세스 상 금액정보가 사용자에 의해 변경되어 시작될 수 있는 가능성이 있음
 
+`가맹점 서버`단에서 <b>결제정보 조회 API</b>를 통한 체크가 필수 
 
+```
+if payment status == 'paid' and apyment.amount == 결제되었어야할금액:
+	print('결제 성공')
+elif payment.status == 'ready' and payment.pay_method == 'vbank':
+	print('가상계좌 발급성공')
+else:
+	print('결제 실패')
+	
+```
 
+`status` : Iamport측에서 결제상태를 알려줌
 
+결제취소는 `REST API`를 이용하여 쉽게 가능
+
+# 결제요청 파라미터
+> <a href="https://admin.iamport.kr/">https://admin.iamport.kr </a>
+
+* pg : PG사 미지정시에 아임포트 관리자에서 지정한 기본PG가 호출(string)
+* pay_method : 결제수단(default:'card')(string)
+* merchant_uid : 가맹점에서 생성/관리하는 고유 주문번호(string)
+	* 결제가 실패하더라도, 재생성해야 함 
+* name : 주문명(string)
+* amount(필수) : 결제금액(number)
+* buyer_name : 주문자명(string)
+* buyer_tel(필수) : 주문자 연락처(string)
+* buyer_email : 주문자 이메일(string)
+* buyer_addr : 주문자 주소(string)
+* buyer_postcode : 주문자 우편번호(string)
+* buyer_postcode : 주문자 우편번호(string)
+* notice_url : (string/ array of string)
 
 
