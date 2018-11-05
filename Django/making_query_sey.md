@@ -28,3 +28,11 @@ Poll.object.get(
 `why?`
 
 파이썬 함수차원에서 함수의 인자는 위치인자, 키워드인자 순으로 
+
+---
+
+#### ORM
+
+`.select_related` < 테이블을 한번만 경유
+
+` prefetch_related` < 역방향
