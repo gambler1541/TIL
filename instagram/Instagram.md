@@ -8,3 +8,4 @@ class Meta 옵션 중
 
 verbose_name, verbose_name_plural을 지정할 수 있음
 
+`create_user`메서드는 create와 달리 자동으로 password를 해싱해준다.
