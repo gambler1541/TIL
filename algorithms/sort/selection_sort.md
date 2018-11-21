@@ -13,3 +13,5 @@ def selection_sort(list):
 			list[x], list[min_index] = list[min_index], list[x] # x의 값과 min_index에 해당하는 값의 자리를 바꿔줌
 		return list # 최종적으로 정렬된 list를 리턴
 ```
+
+
