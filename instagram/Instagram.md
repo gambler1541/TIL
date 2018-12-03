@@ -41,3 +41,15 @@ Post.object.filter(commnets__tags__name='<무언가>')
 # 여러개를 가져오고 싶을 경우
 Post.object.filter(commnets__tags__name__in=['',''])
 ```
+
+`safe`
+><span>{{ comment.html | safe }}</span>
+
+* tag escape를 방지
+* return re.sub(
+            self.TAG_PATTERN,
+            r'\<a href="/explore/tags/\g<tag>/">#\g<tag></a>',
+            self.content,
+        )
+* 템플릿에서 위 코드사용 시 태그가 문자열로 나오는걸 방지 해준다.
+
