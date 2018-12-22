@@ -53,3 +53,19 @@ Post.object.filter(commnets__tags__name__in=['',''])
         )
 * 템플릿에서 위 코드사용 시 태그가 문자열로 나오는걸 방지 해준다.
 
+## Custom User Model
+> 기본 사용자 모델을 확장하거나 완전히 대체된 사용자 모델을 사용가능
+ 
+ * User와 연결된 OTO필드를 만들어주면 User가 확장된것 처럼 보임
+ 
+ > ex) User의 프로필 정보등을 새 필드에 저장
+ 
+ * `Abstractuser`를 상속받아 사용
+ * project 시작시 members모델을 만들고 시작
+ 
+ 
+ * 사용자 모델 클래스에 대한 참조가 필요할 때
+ 	* `get_user_model()`함수 사용
+ * 사용자 모델 클래스에 대한 관게를 설정할 때
+ 	* ex)관계필드(ForignKey,MTM,OTO)등의 관계부분
+ 		* `settings.AUTH_USER_MODEL`(문자열 반환)
