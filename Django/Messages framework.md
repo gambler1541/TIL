@@ -35,4 +35,13 @@
 
 * 메시지가 필요한 view에서 message를 담아 보냄
 * template에서 messages를 이용해 사용가능
+
+* settings에 MESSAGE_TAGS를 이용해 각 contant의 이름을 변경 가능
+
+```
+MESSAGE_TAGS = {
+	messages.ERROR: 'danger',
+}
+```
+* ERROR로 인식되던 constant가 danger로 인식
 	
