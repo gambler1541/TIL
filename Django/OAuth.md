@@ -95,6 +95,30 @@ access_token의 응답은 String객체
 
 만약 이 String객체가 JSON형태로 되어있으면, 이 데이터를 파이썬 객체로 변환할 수 있음
 
-`json.loads()`를 사용하면 인수로 온 문자열이 json형식일거라 생각하고, python object로 변환
+`json.loads()`를 사용하면 인수로 온 문자열이 json형식일거라 생각하고, python object로 변환(dict)
+
+
+* json.loads()를 간단하게 쓴다면
+
+```
+response.json()
+```
+
+* reponse로 번역된 결과물을 바로 파이썬 객체로 변환
+
+## 그래프 API
+> Facebook쪽에서 정보를 가져오거나 행동을 할 수 있음
+
+* 노드 : 개별 개체
+* 에지 : 개체와 개체간의 연결
+* 필드 : 개체에 대한 데이터
+
+* access_token을 이용하여 그래프 API를 이용할 수 있다.
+ 
+<a href="https://developers.facebook.com/tools/explorer">-test tool-</a>
+
+<img src='../img/그래프api.png'>
+
+
 
 
