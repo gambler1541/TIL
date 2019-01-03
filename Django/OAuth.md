@@ -119,6 +119,16 @@ response.json()
 
 <img src='../img/그래프api.png'>
 
+* me = 노드(access_token에 해당하는 유저)
+* fields = 필드
 
+User를 	요청하기 위한코드
 
+```
+graph.facebook.com/v3.2/{me}/
+```
 
+* access_token을 위의 주소로 `get`방식으로 보냄
+* `io` : input/out
+	* open : 실제로 존재하는 파일을 다룸
+	* BytesIO : 실제 파일론 존재하진않음(메모리에 존재)
