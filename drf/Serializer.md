@@ -25,3 +25,17 @@ serializer.data
  
 ```
 
+## Serializer없이 변환
+* django object를 파이썬의 딕셔너리로 변환
+	* `model_to_dict(object)`
+
+```python
+with open('s1.txt', 'wt') as f:
+	json.dump(model)_to_dict(s1), f)
+	
+data = open('s1.txt', 'rt').read()
+
+```
+
+* data의 결과는 json형태의 문자열
+* json.loads(data)로 파이썬의 딕셔너리로 변환가능
